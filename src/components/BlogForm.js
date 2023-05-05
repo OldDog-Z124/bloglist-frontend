@@ -22,11 +22,11 @@ function BlogForm ({ createBlog }) {
   }
 
   return (
-    <div>
-      <h2>create new</h2>
-      <form onSubmit={handleCreateBlog}>
-        <div>
-          <label htmlFor='title'>title:</label>
+    <div className='blogform'>
+      <h2 className='blogform-title'>create new</h2>
+      <form className='blogform-form' onSubmit={handleCreateBlog}>
+        <div className='blogform-form-title blogform-form-item'>
+          <label htmlFor='title'>title</label>
           <input
             type='text'
             name='title'
@@ -35,8 +35,8 @@ function BlogForm ({ createBlog }) {
             onChange={(event) => setTitle(event.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor='author'>author:</label>
+        <div className='blogform-form-author blogform-form-item'>
+          <label htmlFor='author'>author</label>
           <input
             type='text'
             name='author'
@@ -45,8 +45,8 @@ function BlogForm ({ createBlog }) {
             onChange={(event) => setAuthor(event.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor='url'>url:</label>
+        <div className='blogform-form-url blogform-form-item'>
+          <label htmlFor='url'>url</label>
           <input
             type='text'
             name='url'
@@ -55,7 +55,7 @@ function BlogForm ({ createBlog }) {
             onChange={(event) => setUrl(event.target.value)}
           />
         </div>
-        <div>
+        <div className='blogform-form-submit'>
           <button type='submit'>create</button>
         </div>
       </form>

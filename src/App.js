@@ -13,15 +13,11 @@ const App = () => {
   const [message, setMessage] = useState({ text: null, type: null })
   const blogFormRef = useRef()
 
-  /*
   useEffect(() => {
     blogsService.getAll().then(blogs => {
-      const copeBlog = blogs.map(blog => blog)
-      copeBlog.sort((a, b) => b.likes - a.likes)
-      setBlogs(copeBlog)
+      setBlogs(blogs)
     })
   }, [])
-  */
 
   useEffect(() => {
     const user = JSON.parse(
@@ -119,31 +115,37 @@ const App = () => {
 
   if (user === null) {
     return (
-      <div>
+      <div className='main'>
         <Message text={message.text} type={message.type} />
-        <LoginForm login={handleLogin} />
+        <div className='main-container'>
+          <LoginForm login={handleLogin} />
+        </div>
       </div>
     )
   }
 
   return (
-    <div>
+    <div className='main'>
       <Message text={message.text} type={message.type} />
-      <h2>blogs</h2>
-      <p>
-        <span>{user.name} logged in</span>
-        <button onClick={handleLogout}>logout</button>
+      <h1 className='main-title'>BLOGS</h1>
+      <p className='main-user'>
+        <span className='main-user-info'>{user.name} logged in</span>
+        <button className='main-user-logout' onClick={handleLogout}>logout</button>
       </p>
 
-      <Togglable buttonLabel='create blog' ref={blogFormRef}>
-        <BlogForm createBlog={handleCreateBlog} />
-      </Togglable>
+      <div className='main-container'>
+        <Togglable buttonLabel='create blog' ref={blogFormRef}>
+          <BlogForm createBlog={handleCreateBlog} />
+        </Togglable>
+      </div>
 
-      {blogs && blogs
-        .sort((a, b) => b.likes - a.likes)
-        .map(blog =>
-          <Blog key={blog.id} blog={blog} likesToAddOne={likesToAddOne} handleDeleteBlog={handleDeleteBlog} />
-        )}
+      <div className='main-blogs'>
+        {blogs && blogs
+          .sort((a, b) => b.likes - a.likes)
+          .map(blog =>
+            <Blog key={blog.id} blog={blog} user={user} likesToAddOne={likesToAddOne} handleDeleteBlog={handleDeleteBlog} />
+          )}
+      </div>
     </div>
   )
 }

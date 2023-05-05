@@ -18,10 +18,10 @@ function LoginForm ({ login }) {
   }
 
   return (
-    <div>
-      <h2>log in to application</h2>
-      <form onSubmit={handleLogin}>
-        <div>
+    <div className='loginform'>
+      <h2 className='loginform-title'>log in to application</h2>
+      <form className='loginform-form' onSubmit={handleLogin}>
+        <div className='loginform-form-item loginform-form-username'>
           <label htmlFor='username'>username</label>
           <input
             type='text'
@@ -31,7 +31,7 @@ function LoginForm ({ login }) {
             onChange={(event) => setUsername(event.target.value)}
           />
         </div>
-        <div>
+        <div className='loginform-form-item loginform-form-password'>
           <label htmlFor='password'>password</label>
           <input
             type='password'
@@ -41,7 +41,7 @@ function LoginForm ({ login }) {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <div>
+        <div className='loginform-form-submit'>
           <button type='submit'>login</button>
         </div>
       </form>

@@ -25,16 +25,16 @@ const Togglable = forwardRef(({ buttonLabel, children }, refs) => {
   }
 
   return (
-    <div>
-      <div id='hide' style={hideStyle}>
-        <button onClick={show}>{buttonLabel}</button>
+    <div className='togglable'>
+      <div id='hide' className='togglable-container' style={hideStyle}>
+        <button className='togglable-show togglable-button' onClick={show}>{buttonLabel}</button>
       </div>
-      <div id='show' style={showStyle}>
-        <div>
+      <div id='show' className='togglable-container' style={showStyle}>
+        <div className='togglable-main'>
           {children}
         </div>
-        <div>
-          <button onClick={hide}>cancel</button>
+        <div className='togglable-footer'>
+          <button className='togglable-hide togglable-button' onClick={hide}>cancel</button>
         </div>
       </div>
     </div>
